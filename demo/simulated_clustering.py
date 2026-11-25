@@ -500,3 +500,87 @@ if __name__ == "__main__":
         )
 
         sys.exit(1)
+
+"""
+ANALYSIS AND INTERPRETATION OF RESULTS
+--------------------------------------
+
+1. Exploratory Data Analysis
+
+The simulated dataset consists of 300 observations and four numerical
+features. The initial scatter plot provides an indication of the
+presence of distinct groups within the data.
+
+However, since the dataset is four-dimensional, a single two-dimensional
+plot cannot fully represent its clustering structure. Therefore, pairwise
+scatter plots are used to examine the relationships between all four
+features and provide further visual evidence of cluster separation.
+
+2. Feature Standardisation
+
+Before applying K-means, all numerical features are standardised to
+zero mean and unit variance. This prevents features with larger numerical
+scales from disproportionately influencing the Euclidean distances
+used by the clustering algorithm.
+
+3. Elbow Method
+
+The elbow curve shows a substantial decrease in inertia as the number
+of clusters increases from one to six.
+
+In particular, inertia decreases from approximately 108.1404 at k = 5
+to 57.6601 at k = 6, representing a reduction of approximately 46.7%.
+
+However, increasing k from six to seven reduces inertia by only
+approximately 7.4%.
+
+The comparatively smaller improvements beyond six clusters suggest
+that further increasing k provides diminishing benefits and may
+unnecessarily subdivide existing groups.
+
+4. Silhouette Analysis
+
+The silhouette score provides a measure of both cluster cohesion
+and separation.
+
+The highest silhouette score of approximately 0.6718 is achieved
+at k = 6, compared with 0.6399 at k = 5 and 0.6110 at k = 7.
+
+The silhouette score decreases further for larger values of k,
+suggesting that additional clusters produce a less convincing
+separation of the observations.
+
+A score of approximately 0.672 indicates reasonably compact and
+well-separated clusters, although some overlap may still exist.
+
+5. Visualisation and Cluster Profiles
+
+The cluster plots generated using cluster_maker illustrate the
+distribution of observations and their corresponding centroids.
+
+The supporting pairwise scatter plots provide six different
+two-dimensional projections of the four-dimensional dataset.
+These plots help assess cluster separation across different
+feature combinations.
+
+The selected configuration produces six clusters, each containing
+50 observations. The cluster profiles also reveal differences in
+the mean feature values between the identified groups.
+
+Although equal cluster sizes alone do not establish clustering
+quality, they provide additional supporting evidence in this
+synthetic dataset.
+
+6. Final Conclusion
+
+Based on the elbow curve, silhouette scores, cluster profiles
+and visualisations, six clusters represent a plausible and
+well-supported separation of the simulated dataset.
+
+Using fewer than six clusters may merge distinct groups, while
+using more than six clusters may unnecessarily divide existing
+groups into smaller subgroups.
+
+Both quantitative evaluation and visual evidence support the
+selection of k = 6 among the clustering configurations investigated.
+"""
